@@ -99,6 +99,7 @@ a
  footer{
   position: fixed;
   bottom: 0;
+  margin-left: -0.5rem;
  }
  .footer-distributed{
   background-color: #292c2f;
