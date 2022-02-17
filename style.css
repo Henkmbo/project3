@@ -4,6 +4,7 @@ body
   background-color:white;
   font-family: 'Oswald', sans-serif;
   background-image: url(https://coolbackgrounds.io/images/backgrounds/index/compute-ea4c57a4.png);
+
 }
 
 
@@ -27,13 +28,16 @@ body
   -ms-flex-align: center;
   align-items: center;
   overflow: hidden;
-
+  margin-top: -0.5rem;
+  margin-left: -1rem;
+  margin-right: -0.52rem;
 }
 
 .container .logo {
   max-width: 250px;
   padding: 0 10px;
   overflow: hidden;
+ margin-top: 0;
 }
 
 .container .logo a {
@@ -50,7 +54,7 @@ body
 
 .container .logo a img {
   max-width: 100%;
-  max-height: 60px;
+  max-height: 50px;
 }
 
 .container .navbar {
