@@ -148,7 +148,7 @@ body
     -ms-flex: 0;
     flex: 0;
     z-index: 100;
-    opacity: 98%;
+    
   }
 
   .container .navbar ul {
@@ -167,6 +167,7 @@ body
     -webkit-transition: left .3s;
     -o-transition: left .3s;
     transition: left .3s;
+    text-align: center;
   }
 
   .container .navbar ul li a {
