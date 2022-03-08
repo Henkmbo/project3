@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./favicon (1).ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 </head>
 
 <body>
@@ -47,6 +48,9 @@
     </div>
   </div> 
 <!-- CONTENT -->
+<p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+<p><label for="file" style="cursor: pointer; color:black;" >Upload News</label></p>
+<p><img id="output" width="400" /></p>
 
 
 
@@ -75,6 +79,12 @@
   function Hide(){
   navList.classList.remove("_Menus-show");
   }
+ 
+  var loadFile = function(event) {
+	var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+
   </script>
 
 </body>
