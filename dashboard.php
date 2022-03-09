@@ -1,9 +1,3 @@
-<?php
-
-?>
-
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -17,7 +11,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./favicon (1).ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
 </head>
 
 <body>
@@ -36,7 +29,7 @@
 
       <ul id="nav-lists">
         <li class="close"><span onclick="Hide()">×</span></li>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <li class="separator"><a> | </a></li>
         <li><a href="archief.html">Archief</a></li>
         <li class="separator"><a> | </a></li>
@@ -48,9 +41,19 @@
     </div>
   </div> 
 <!-- CONTENT -->
-<p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-<p><label for="file" style="cursor: pointer; color:black;" >Upload News</label></p>
-<p><img id="output" width="400" /></p>
+<div class="uploaden">
+ <?php if (isset($_GET['error'])): ?>
+    <p><?php echo $_GET['error'] ?></p>
+    <?php endif ?>
+
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        <input type="file" name="my_image">
+        <input type="submit" name="submit" value="Upload">
+    </form>
+  </div>
+</body>
+</html>
+
 
 
 
@@ -69,6 +72,25 @@
 
 
 
+<style>
+.uploaden{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+.alb{
+    width: 200px;
+    height: 200px;
+    padding: 5px;
+    
+}
+.alb img {
+    width: 50%;
+    height: 100%;
+    
+}
 </style>
 <script>
   var navList = document.getElementById("nav-lists");
@@ -79,12 +101,6 @@
   function Hide(){
   navList.classList.remove("_Menus-show");
   }
- 
-  var loadFile = function(event) {
-	var image = document.getElementById('output');
-	image.src = URL.createObjectURL(event.target.files[0]);
-};
-
   </script>
 
 </body>

@@ -28,16 +28,16 @@ if ($error === 0) {
                 $sql = "INSERT INTO images(image_url)
                         VALUES('$new_img_name')";
                         mysqli_query($conn, $sql);
-                        header("Location: view.php");
+                        header("Location: index.php");
 
              } else {
-            $em = "You can't upload files of this type";
+            $em = "Kies alstublieft een afbeelding.";
             header("Location: index.php?error=$em");
             }
             
     }
  }else {
-        $em = "Je hebt geen bestand geselecteerd!";
+        $em = "Je hebt geen bestand geselecteerd.";
         header ("Location: index.php?error=$em");
 }
 }else {

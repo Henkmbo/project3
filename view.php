@@ -17,8 +17,9 @@ body {
     padding: 5px;
 }
 .alb img {
-    width: 100%;
+    width: 50%;
     height: 100%;
+    
 }
 a{
     text-decoration: none;
