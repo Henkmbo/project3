@@ -35,11 +35,12 @@
 
       <ul id="nav-lists">
         <li class="close"><span onclick="Hide()">×</span></li>
-        <li><a href="index.php">Home</a></li>
+        <li><a href="index1.php">Home</a></li>
         <li class="separator"><a> | </a></li>
-        <li><a href="archief.html">Archief</a></li>
+        <li><a href="archief2.php">Archief</a></li>
         <li class="separator"><a> | </a></li>
-        <li><a href="login.html">Inloggen</a></li>
+        <li><a href="./test/logout.php">Uitloggen</a></li>
+    
       
       
       </ul>

@@ -1,15 +1,9 @@
-<?php include "connect_db.php"; ?>
+<?php
+
+?>
+
 <!DOCTYPE html>
-<html>
-<head>
-
-
-</head>
-<body>
-  
-</body>
-</html>
-
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -29,7 +23,7 @@
 <!-- NAVBAR -->
   <div class="container">
     <div class="logo">
-      <a href="index.php"><img src="logo.png" alt="logo"></a>
+      <a href="index.html"><img src="logo.png" alt="logo"></a>
     </div>
     <div class="navbar">
 
@@ -41,55 +35,24 @@
 
       <ul id="nav-lists">
         <li class="close"><span onclick="Hide()">×</span></li>
-        <li><a href="index.php">Home</a></li>
+        <li><a href="index3.php">Home</a></li>
         <li class="separator"><a> | </a></li>
-        <li><a href="archief2.php">Archief</a></li>
+        <li><a href="archief3.php">Archief</a></li>
         <li class="separator"><a> | </a></li>
-        <li><a href="./test/login.php">Inloggen</a></li>
+        <li><a href="dashboard.php">Dashboard</a></li>
+        <li class="separator"><a> | </a></li>
+        <li><a href="./test/logout.php">Uitloggen</a></li>   
         
-        
-        
+     
+      
+    
+      
       
       </ul>
 
     </div>
   </div> 
 <!-- CONTENT -->
-
-    <?php
-        $sql = "SELECT * FROM images ORDER BY id DESC LIMIT 3 OFFSET 5";
-        $res = mysqli_query($conn,  $sql);
-        if (mysqli_num_rows($res) > 0) {
-            while ($images = mysqli_fetch_assoc($res)){  ?>
-
-            
-
-            <div class="containercard">
-         <div class="card">
-           
-            <div class="top-text">
-               <div class="name">
-           <div class="alb">
-                <img src="uploads/<?=$images['image_url']?> ">
-            </div>
-               </div>
-               <p>
-                  Nieuws
-                  <?php ?>
-               </p>
-            </div>
-            <div class="bottom-text">
-               <div class="text">
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem quaerat iusto adipisci reprehenderit quasi cum perspiciatis, minima reiciendis magni quam!
-               </div>
-               
-            </div>
-         </div>
-
-           <?php } }?>
-</body>
-</html>
-
 
 
 
@@ -108,33 +71,7 @@
 
 
 
-  <style>
-
-.alb img {
-    width: 100%;
-    height: 100%;
-    
-    
-}
-a{
-    text-decoration: none;
-    color: black;
-    
-}
-
-
-@media screen and (max-width: 978px) {
-  .containercard{
-    flex-wrap: wrap;
-    flex-direction: column;
-  }
-  .card{
-    max-width: 700px;
-    margin: 20px 0;
-  }
-}
 </style>
-
 <script>
   var navList = document.getElementById("nav-lists");
   function Show() {

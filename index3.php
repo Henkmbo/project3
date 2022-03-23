@@ -41,15 +41,15 @@
 
       <ul id="nav-lists">
         <li class="close"><span onclick="Hide()">×</span></li>
-        <li><a href="index.php">Home</a></li>
+        <li><a href="index3.php">Home</a></li>
         <li class="separator"><a> | </a></li>
         <li><a href="archief2.php">Archief</a></li>
         <li class="separator"><a> | </a></li>
-        <li><a href="./test/login.php">Inloggen</a></li>
+        <li><a href="dashboard.php">Dashboard</a></li>
+        <li class="separator"><a> | </a></li>
+       <li><a href="./test/logout.php">Uitloggen</a></li>
         
-        
-        
-      
+     
       </ul>
 
     </div>
@@ -57,7 +57,7 @@
 <!-- CONTENT -->
 
     <?php
-        $sql = "SELECT * FROM images ORDER BY id DESC LIMIT 3 OFFSET 5";
+        $sql = "SELECT * FROM images ORDER BY id DESC LIMIT 3";
         $res = mysqli_query($conn,  $sql);
         if (mysqli_num_rows($res) > 0) {
             while ($images = mysqli_fetch_assoc($res)){  ?>
