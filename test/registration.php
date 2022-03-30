@@ -24,7 +24,7 @@
         $result   = mysqli_query($con, $query);
         if ($result) {
             echo "<div class='form'>
-                  <h3>You are registered successfully.</h3><br/>
+                  <h3>Uw account is aangemaakt</h3><br/>
                   <p class='link'>Click here to <a href='login.php'>Login</a></p>
                   </div>";
         } else {

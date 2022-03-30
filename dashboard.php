@@ -16,7 +16,7 @@
     <!-- NAVBAR -->
     <div class="container">
         <div class="logo">
-            <a href="index.html"><img src="logo.png" alt="logo"></a>
+            <a href="index.php3"><img src="logo.png" alt="logo"></a>
         </div>
         <div class="navbar">
 
@@ -51,7 +51,7 @@
 
         <form action="upload.php" method="post" enctype="multipart/form-data">
             <input type="file" name="my_image">
-            <input type="submit" name="submit" value="Upload">
+            <input type="submit" onclick="window.location.href = 'http://www.dagblad.nl/index3.php';" value="upload"/>
         </form>
     </div>
 </body>

@@ -1,7 +1,3 @@
-<script>
-     alert("Je probeert nu toegang te krijgen voor de Editor");
-</script>
-
 <?php
 
 $password = "2109"; 
