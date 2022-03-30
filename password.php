@@ -7,7 +7,7 @@
 $password = "2109"; 
 if (isset($_POST["password"]) && ($_POST["password"]=="$password")) { ?>
   <h2 style="color: green;">Het ingevoerde wachtwoord was juist, u heeft nu toegang tot Editor.</h2>
-  <input type="button" onclick="window.location.href = 'http://www.dagblad.nl/index3.php';" value="Klik hier om door te gaan"/>
+  <input type="button" onclick="window.location.href = 'http://www.project3.nl/index3.php';" value="Klik hier om door te gaan"/>
 <?php }
 //Display this content if the provided password is wrong
 else{ 

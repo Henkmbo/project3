@@ -285,7 +285,7 @@ height:100%;
 
 
 .containercard{
-  padding: 0 40px;
+  padding: 0 100px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -365,4 +365,5 @@ height:100%;
     max-width: 700px;
     margin: 20px 0;
   }
-}
+} 
+

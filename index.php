@@ -1,4 +1,4 @@
-<?php include "connect_db.php"; ?>
+<?php include "./news/connect_db.php"; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,37 +56,45 @@
   </div> 
 <!-- CONTENT -->
 
-    <?php
-        $sql = "SELECT * FROM images ORDER BY id DESC LIMIT 3 OFFSET 5";
-        $res = mysqli_query($conn,  $sql);
-        if (mysqli_num_rows($res) > 0) {
-            while ($images = mysqli_fetch_assoc($res)){  ?>
+<?php
+    
 
-            
+    $sql = "SELECT * FROM images ORDER BY id DESC LIMIT 4";
+    $res = mysqli_query($conn,  $sql);
+    if (mysqli_num_rows($res) > 0) {
+        while ($images = mysqli_fetch_assoc($res)){  ?>
 
-            <div class="containercard">
-         <div class="card">
+        
+
+        <div class="containercard">
+     <div class="card">
+       
+        <div class="top-text">
+           <div class="name">
+       <div class="alb">
+          <?=$images['titel']?>
+        </div>
+           </div>
+           <p>
            
-            <div class="top-text">
-               <div class="name">
-           <div class="alb">
-                <img src="uploads/<?=$images['image_url']?> ">
-            </div>
-               </div>
-               <p>
-                  Nieuws
-                  <?php ?>
-               </p>
-            </div>
-            <div class="bottom-text">
-               <div class="text">
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem quaerat iusto adipisci reprehenderit quasi cum perspiciatis, minima reiciendis magni quam!
-               </div>
-               
-            </div>
-         </div>
+           <img src="<?=$images['image_url']?>" width="250px">
+           
+           </p>
+        </div>
+        <div class="bottom-text">
+           <div class="text">
+             <div class="alb">
+              
+               <?=$images['tekst']?>
+        </div>
+           </div>
+           <div class="btn">
+              <a href="./archief.html">Lees meer</a>
+           </div>
+        </div>
+     </div>
 
-           <?php } }?>
+       <?php } }?>
 </body>
 </html>
 
