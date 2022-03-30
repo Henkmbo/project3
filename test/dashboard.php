@@ -16,10 +16,10 @@ include("auth_session.php");
 <form action="/action_page.php">
 <input type="radio" id="html" name="fav_language" value="HTML" >
 <label for="html">Bezoeker</label><br>
-<input type="button" onclick="window.location.href = 'http://www.dagbladnieuws.nl/index1.php';" value="Submit"/>
+<input type="button" onclick="window.location.href = 'http://www.project3.nl/index1.php';" value="Submit"/>
 <br> <br> <input  type="radio" id="css" name="fav_language" value="CSS"  required="required" >
  <label for="css">Editor</label><br>
- <input type="button" onclick="window.location.href = 'http://www.dagblad.nl/password.php';" value="Submit"/>
+ <input type="button" onclick="window.location.href = 'http://www.project3.nl/password.php';" value="Submit"/>
  <br>
  
 </div>

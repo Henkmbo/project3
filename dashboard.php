@@ -1,9 +1,10 @@
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dagblad | Nieuws</title>
-    <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="script.js">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,27 +21,29 @@
         </div>
         <div class="navbar">
 
-            <div class="icon-bar" onclick="Show()">
-                <i></i>
-                <i></i>
-                <i></i>
-            </div>
-
-            <ul id="nav-lists">
-                <li class="close"><span onclick="Hide()">×</span></li>
-                <li><a href="index3.php">Home</a></li>
-                <li class="separator"><a> | </a></li>
-                <li><a href="archief3.php">Archief</a></li>
-                <li class="separator"><a> | </a></li>
-                <li><a href="dashboard.php">Dashboard</a></li>
-                <li class="separator"><a> | </a></li>
-                <li><a href="./test/logout.php">Uitloggen</a></li>
+    </div>
+  </div> 
 
 
 
 
-            </ul>
 
+<!-- CONTENT -->
+<div class="uploaden">
+ 
+<?php if (isset($_GET['error'])): ?>
+    <p><?php echo $_GET['error'] ?></p>
+    <?php endif ?>
+
+    <div class="container1">
+    <div class="row">
+      <div class="col-6">
+
+      <form action="index.php" method="post">
+
+        <div class="mb-3">
+        <label for="inputTitel">Titel:</label>
+        <input class="form-control" placeholder="invoeren is verplicht...." type="text" name="titel" id="inputTitel" required> </br>
         </div>
     </div>
     <!-- CONTENT -->
@@ -56,59 +59,67 @@
     </div>
 </body>
 
+        
+
+      </form>
+      
+  </div>
+
+        
+
+  </div>
+
+</body>
 </html>
 
 
 
 
 <!-- FOOTER -->
-<div class="footer">
+  <div class="footer">
     <div id="button"></div>
-    <div id="container">
-        <div id="cont">
-            <div class="footer_center">
-                <h3></h3>
-            </div>
-        </div>
-    </div>
-</div>
+  <div id="container">
+  <div id="cont">
+  <div class="footer_center">
+       <h3></h3>
+  </div>
+  </div>
+  </div>
+  </div>
 
 
 
 
 <style>
-.uploaden {
-    display: flex;
+.uploaden{
+  display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     min-height: 100vh;
 }
-
-.alb {
+.alb{
     width: 200px;
     height: 200px;
     padding: 5px;
-
+    
 }
-
 .alb img {
     width: 50%;
     height: 100%;
-
+    
 }
 </style>
 <script>
-var navList = document.getElementById("nav-lists");
-
-function Show() {
-    navList.classList.add("_Menus-show");
-}
-
-function Hide() {
-    navList.classList.remove("_Menus-show");
-}
-</script>
+  var navList = document.getElementById("nav-lists");
+  function Show() {
+  navList.classList.add("_Menus-show");
+  }
+  
+  function Hide(){
+  navList.classList.remove("_Menus-show");
+  }
+  </script>
 
 </body>
 
