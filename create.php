@@ -1,5 +1,5 @@
 <?php
-    include("./connect_db.php");
+    include("./news/connect_db.php");
     
     //We zetten de $_POST-array waarden in afzonderlijke variabelen
     include("./functions.php");
@@ -26,7 +26,7 @@
     $result = mysqli_query($conn, $sql);
 
    if ($result) {
-        header("Location: ../index3.php");
+        header("Location: index.php3");
     }
 
     

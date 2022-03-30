@@ -49,30 +49,7 @@
     </div>
   </div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">titel</th>
-                    <th scope="col">tekst</th>
-                    <th scope="col">image_url</th>
-                  
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>  
-            <?php
-              echo $records;
-            ?>
-            </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
+  
 
   <?php
     
@@ -115,38 +92,7 @@
            <?php } }?>
 
            <div class="cards">
-    <?php
-   include("./connect_db.php");
-   $sql = "SELECT * FROM `nieuws`  ORDER BY `id` DESC LIMIT 4";
-   $result = $conn->query($sql);
-
-   
-   if (mysqli_num_rows($res) > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo '
-            <div class="card">
-                <div class="card-header">
-                    <img src="'. $row["image_url"] .'" alt="city" width="200px" />
-                </div>
-                <div class="card-body">
-                    <span class="tag tag-pink">Recent news</span>
-                    <h4>
-                        '. $row["titel"] .'
-                    </h4>
-                    <p>
-                        '. $row["tekst"] .'
-                    </p>
-                </div>
-            </div>';
-        }
-  } else {
-    echo "0 results";
-  }
-
-
-
-   ?>
+    
     </div>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

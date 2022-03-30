@@ -1,4 +1,7 @@
-<?php include "connect_db.php"; ?>
+<?php 
+include "connect_db.php"; 
+include "./news/connect_db.php";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,9 +46,9 @@
         <li class="close"><span onclick="Hide()">×</span></li>
         <li><a href="index3.php">Home</a></li>
         <li class="separator"><a> | </a></li>
-        <li><a href="archief2.php">Archief</a></li>
+        <li><a href="archief3.php">Archief</a></li>
         <li class="separator"><a> | </a></li>
-        <li><a href="dashboard.php">Dashboard</a></li>
+        <li><a href="./news/index.php">Dashboard</a></li>
         <li class="separator"><a> | </a></li>
        <li><a href="./test/logout.php">Uitloggen</a></li>
         
@@ -56,8 +59,80 @@
   </div> 
 <!-- CONTENT -->
 
-    <?php
-        $sql = "SELECT * FROM images ORDER BY id DESC LIMIT 3 OFFSET 5";
+<!-- Slideshow container -->
+<div class="slideshow-container">
+
+  <!-- Full-width images with number and caption text -->
+  <div class="mySlides fade">
+    <div class="numbertext">1 / 3</div>
+    <img src="news1.jpg" style="width:100%">
+    <div class="text1">Rusland komt terug van eis gasbetalingen in roebel. 4 miljoen mensen weg uit Oekraine</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">2 / 3</div>
+    <img src="news2.jpg" style="width:100%">
+    <div class="text1">Willem Engel voorlopig vrij, maar mag niet op sociale media</div>
+  </div>
+
+  <div class="mySlides fade">
+    <div class="numbertext">3 / 3</div>
+    <img src="news3.jpg" style="width:100%">
+    <div class="text1">Kabinet: legale verkoop van wiet niet voor tweede kwartaal 2023</div>
+  </div>
+
+  <!-- Next and previous buttons -->
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+<br>
+
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
+
+<script>
+let slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+
+<hr>
+<br>
+<br>
+<br>
+
+
+<?php
+    
+
+        $sql = "SELECT * FROM images ORDER BY id DESC LIMIT 4";
         $res = mysqli_query($conn,  $sql);
         if (mysqli_num_rows($res) > 0) {
             while ($images = mysqli_fetch_assoc($res)){  ?>
@@ -70,23 +145,33 @@
             <div class="top-text">
                <div class="name">
            <div class="alb">
-                <img src="uploads/<?=$images['image_url']?> ">
+              <?=$images['titel']?>
             </div>
                </div>
                <p>
-                  Nieuws
-                  <?php ?>
+               
+               <img src="<?=$images['image_url']?>" width="250px" height="200px">
+               
                </p>
             </div>
             <div class="bottom-text">
                <div class="text">
-                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem quaerat iusto adipisci reprehenderit quasi cum perspiciatis, minima reiciendis magni quam!
+                 <div class="alb">
+                  
+                   <?=$images['tekst']?>
+            </div>
                </div>
-               
+               <div class="btn">
+                  <a href="./archief.html">Lees meer</a>
+               </div>
             </div>
          </div>
 
            <?php } }?>
+
+           <div class="cards">
+    
+    </div>       
 </body>
 </html>
 
