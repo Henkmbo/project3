@@ -1,22 +1,16 @@
-<?php include "connect_db.php"; ?>
+<?php 
+include "connect_db.php"; 
+include "./news/connect_db.php";
+?>
 <!DOCTYPE html>
 <html>
-<head>
-
-
-</head>
-<body>
-  
-</body>
-</html>
-
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dagblad | Nieuws</title>
-   <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="script.js">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,348 +20,181 @@
 </head>
 
 <body>
-<!-- NAVBAR -->
-  <div class="container">
-    <div class="logo">
-      <a href="index.php"><img src="logo.png" alt="logo"></a>
-    </div>
-    <div class="navbar">
+    <!-- NAVBAR -->
+    <div class="container">
+        <div class="logo">
+            <a href="index.php"><img src="logo.png" alt="logo"></a>
+        </div>
+        <div class="navbar">
 
-      <div class="icon-bar" onclick="Show()">
-        <i></i>
-        <i></i>
-        <i></i>
+            <div class="icon-bar" onclick="Show()">
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+
+            <ul id="nav-lists">
+                <li class="close"><span onclick="Hide()">×</span></li>
+                <li><a href="index1.php">Home</a></li>
+                <li class="separator"><a> | </a></li>
+                <li><a href="archief2.php">Archief</a></li>
+                <li class="separator"><a> | </a></li>
+                <li><a href="./test/logout.php">Uitloggen</a></li>
+
+
+            </ul>
+
+        </div>
+    </div>
+    <!-- CONTENT -->
+
+    <section class="intro">
+      <div class="left">
+        <div>
+          <span>Dagblad</span>
+          <h1></h1>
+          <p>Zie het laatste nieuws! op onze geweldige en mooie website.</p>
+          <a href="https://unsplash.com/" target="_blank">Gerwin de Heus<br>Henk van der Kooij</a>
+        </div>
       </div>
 
-      <ul id="nav-lists">
-        <li class="close"><span onclick="Hide()">×</span></li>
-        <li><a href="index1.php">Home</a></li>
-        <li class="separator"><a> | </a></li>
-        <li><a href="archief2.php">Archief</a></li>
-        <li class="separator"><a> | </a></li>
-        <li><a href="./test/logout.php">Uitloggen</a></li>
-      
-     
-      </ul>
-
-    </div>
-  </div> 
-<!-- CONTENT -->
-
-<!-- Slideshow container -->
-<div class="slideshow-container">
-
-  <!-- Full-width images with number and caption text -->
-  <div class="mySlides fade">
-    <div class="numbertext">1 / 3</div>
-    <img src="news1.jpg" style="width:100%">
-    <div class="text1">Rusland komt terug van eis gasbetalingen in roebel. 4 miljoen mensen weg uit Oekraine</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">2 / 3</div>
-    <img src="news2.jpg" style="width:100%">
-    <div class="text1">Willem Engel voorlopig vrij, maar mag niet op sociale media</div>
-  </div>
-
-  <div class="mySlides fade">
-    <div class="numbertext">3 / 3</div>
-    <img src="news3.jpg" style="width:100%">
-    <div class="text1">Kabinet: legale verkoop van wiet niet voor tweede kwartaal 2023</div>
-  </div>
-
-  <!-- Next and previous buttons -->
-  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-<br>
-
-<!-- The dots/circles -->
-<div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-</div>
-
-<script>
-let slideIndex = 1;
-showSlides(slideIndex);
-
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-}
-</script>
-
-<hr>
-<br>
-<br>
-<br>
-
-<?php
-    
-
-    $sql = "SELECT * FROM images ORDER BY id DESC LIMIT 4";
-    $res = mysqli_query($conn,  $sql);
-    if (mysqli_num_rows($res) > 0) {
-        while ($images = mysqli_fetch_assoc($res)){  ?>
-
-        
-
-        <div class="containercard">
-     <div class="card">
-       
-        <div class="top-text">
-           <div class="name">
-       <div class="alb">
-          <?=$images['titel']?>
-        </div>
-           </div>
-           <p>
-           
-           <img src="<?=$images['image_url']?>" width="250px" height="200px">
-           
-           </p>
-        </div>
-        <div class="bottom-text">
-           <div class="text">
-             <div class="alb">
+      <div class="slider">
+        <ul>
+          <li style="background-image:url(https://media.istockphoto.com/vectors/breaking-news-isolated-vector-icon-sign-of-main-news-on-dark-world-vector-id1212012012?k=20&m=1212012012&s=612x612&w=0&h=RBUIgsYpO22XkNXTqqunalkcbpngnuCtZU7xSSgMk6c=)">
+            <div class="center-y">
               
-               <?=$images['tekst']?>
-        </div>
-           </div>
-           <div class="btn">
-              <a href="./archief.html">Lees meer</a>
-           </div>
-        </div>
-     </div>
+            </div>
+          </li>
+          <li style="background-image:url(https://www.internetmatters.org/wp-content/uploads/2020/11/MisInfo-PDF-1200x630-1-1024x538.jpg)" >
+            <div class="center-y">
+    	
+            </div>
+          </li>
+          <li style="background-image:url(https://images.unsplash.com/photo-1456428199391-a3b1cb5e93ab?crop=entropy&fit=crop&fm=jpg&h=675&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=1375)">
+            <div class="center-y">
+             	
+            </div>
+          </li>
+        </ul>
 
-       <?php } }?>
+        <ul>
+          <nav>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+          </nav>
+        </ul>
+      </div>
+	</section>
 
-       <div class="cards">
+    <div class="cards">
 
-</div>
-           <div class="slideshow-container">
-
-<div class="mySlides fade">
-  <div class="numbertext">1 / 3</div>
-  <img src="https://cdn.nos.nl/image/2022/03/29/846440/1920x1080a.jpg" style="width:100%">
-  <a href="./archief2.php"><div class="text">Twintig boetes voor lockdownfeestjes van Britse regering</div></a>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">2 / 3</div>
-  <img src="https://cdn.nos.nl/image/2022/03/29/846467/1920x1080a.jpg" style="width:100%">
-  <div class="text">Topman P&O herhaalt: 800 man ontslaan of hele bedrijf gaat failliet</div>
-</div>
-
-<div class="mySlides fade">
-  <div class="numbertext">3 / 3</div>
-  <img src="https://cdn.nos.nl/image/2022/03/29/846377/1920x1080a.jpg" style="width:100%">
-  <div class="text">Erdogan wil als gastheer Oekraïne-overleg blazoen oppoetsen</div>
-</div>
-
-<a class="prev" onclick="plusSlides(-1)">❮</a>
-<a class="next" onclick="plusSlides(1)">❯</a>
-
-</div>
-<br>
-
-
-</body>
-</html>
-
-
-
-
-<!-- FOOTER -->
-  <div class="footer">
-    <div id="button"></div>
-  <div id="container">
-  <div id="cont">
-  <div class="footer_center">
-       <h3></h3>
-  </div>
-  </div>
-  </div>
-  </div>
-
-
-
-
-  <style>
-* {box-sizing: border-box}
-
-.mySlides {display: none}
-img {vertical-align: middle;}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
-}
-
-/* Next & previous buttons */
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
-
-/* Caption text */
-.text {
-  color: white;
-  font-size: 30px;
-  padding: 8px 12px;
-  position: absolute;
-  bottom: 8px;
-  width: 100%;
-  text-align: center;
-  font-family: 'Roboto Condensed', sans-serif;
-}
-
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-}
-
-.active, .dot:hover {
-  background-color: #717171;
-}
-
-/* Fading animation */
-.fade {
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
-
-@keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
-
-/* On smaller screens, decrease text size */
-@media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
-}
-.alb img {
-    width: 100%;
-    height: 100%;
+        <?php
+       include("connect_db.php");
+       $sql = "SELECT * FROM `images`  ORDER BY `id` DESC LIMIT 4";
+       $result = $conn->query($sql);
     
-    
-}
-a{
-    text-decoration: none;
-    color: black;
-    
-}
+       
+       if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo '
+                <div class="card">
+                    <div class="card-header">
+                        <img src="'. $row["image_url"] .'" alt="img" width="200px" />
+                    </div>
+                    <div class="card-body">
+                        <h4>
+                            '. $row["titel"] .'
+                        </h4>
+                        <p>
+                            '. $row["tekst"] .'
+                        </p>
+                    </div>
+                </div>';
+            }
+      } else {
+        echo "0 results";
+      }
+    ?>
+    </div>
 
 
-@media screen and (max-width: 978px) {
-  .containercard{
-    flex-wrap: wrap;
-    flex-direction: column;
-  }
-  .card{
-    max-width: 700px;
-    margin: 20px 0;
-  }
-}
-</style>
+    <script>
+    var navList = document.getElementById("nav-lists");
 
-<script>
-  var navList = document.getElementById("nav-lists");
-  function Show() {
-  navList.classList.add("_Menus-show");
-  }
-  
-  function Hide(){
-  navList.classList.remove("_Menus-show");
-  }
-  
-let slideIndex = 1;
-showSlides(slideIndex);
+    function Show() {
+        navList.classList.add("_Menus-show");
+    }
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+    function Hide() {
+        navList.classList.remove("_Menus-show");
+    }
 
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
+    {
+	class SliderClip {
+		constructor(el) {
+			this.el = el;
+			this.Slides = Array.from(this.el.querySelectorAll('li'));
+			this.Nav = Array.from(this.el.querySelectorAll('nav a'));
+			this.totalSlides = this.Slides.length;
+			this.current = 0;
+			this.autoPlay = true; //true or false
+			this.timeTrans = 4000; //transition time in milliseconds
+			this.IndexElements = [];
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
+			for(let i=0;i<this.totalSlides;i++) {
+				this.IndexElements.push(i);
+			}
+
+			this.setCurret();
+			this.initEvents();
+		}
+		setCurret() {
+			this.Slides[this.current].classList.add('current');
+			this.Nav[this.current].classList.add('current_dot');
+		}
+		initEvents() {
+			const self = this;
+
+			this.Nav.forEach((dot) => {
+				dot.addEventListener('click', (ele) => {
+					ele.preventDefault();
+					this.changeSlide(this.Nav.indexOf(dot));
+				})
+			})
+
+			this.el.addEventListener('mouseenter', () => self.autoPlay = false);
+			this.el.addEventListener('mouseleave', () => self.autoPlay = true);
+
+			setInterval(function() {
+				if (self.autoPlay) {
+					self.current = self.current < self.Slides.length-1 ? self.current + 1 : 0;
+					self.changeSlide(self.current);
+				}
+			}, this.timeTrans);
+
+		}
+		changeSlide(index) {
+
+			this.Nav.forEach((allDot) => allDot.classList.remove('current_dot'));
+
+			this.Slides.forEach((allSlides) => allSlides.classList.remove('prev', 'current'));
+
+			const getAllPrev = value => value < index;
+
+			const prevElements = this.IndexElements.filter(getAllPrev);
+
+			prevElements.forEach((indexPrevEle) => this.Slides[indexPrevEle].classList.add('prev'));
+
+			this.Slides[index].classList.add('current');
+			this.Nav[index].classList.add('current_dot');
+		}
+	}
+
+	const slider = new SliderClip(document.querySelector('.slider'));
 }
-  </script>
+    </script>
 
 </body>
 

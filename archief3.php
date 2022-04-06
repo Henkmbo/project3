@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dagblad | Nieuws</title>
-   <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="script.js">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,106 +20,101 @@
 </head>
 
 <body>
-<!-- NAVBAR -->
-  <div class="container">
-    <div class="logo">
-      <a href="index.html"><img src="logo.png" alt="logo"></a>
+    <!-- NAVBAR -->
+    <div class="container">
+        <div class="logo">
+            <a href="index.html"><img src="logo.png" alt="logo"></a>
+        </div>
+        <div class="navbar">
+
+            <div class="icon-bar" onclick="Show()">
+                <i></i>
+                <i></i>
+                <i></i>
+            </div>
+
+            <ul id="nav-lists">
+                <li class="close"><span onclick="Hide()">×</span></li>
+                <li><a href="index3.php">Home</a></li>
+                <li class="separator"><a> | </a></li>
+                <li><a href="archief3.php">Archief</a></li>
+                <li class="separator"><a> | </a></li>
+                <li><a href="./news/index.php">Dashboard</a></li>
+                <li class="separator"><a> | </a></li>
+                <li><a href="./test/logout.php">Uitloggen</a></li>
+            </ul>
+        </div>
     </div>
-    <div class="navbar">
+    <!-- CONTENT -->
 
-      <div class="icon-bar" onclick="Show()">
-        <i></i>
-        <i></i>
-        <i></i>
-      </div>
+    <div class="cards">
 
-      <ul id="nav-lists">
-        <li class="close"><span onclick="Hide()">×</span></li>
-        <li><a href="index3.php">Home</a></li>
-        <li class="separator"><a> | </a></li>
-        <li><a href="archief3.php">Archief</a></li>
-        <li class="separator"><a> | </a></li>
-        <li><a href="./news/index.php">Dashboard</a></li>
-        <li class="separator"><a> | </a></li>
-        <li><a href="./test/logout.php">Uitloggen</a></li>   
-        
-     
-      
+        <?php
+       include("connect_db.php");
+       $sql = "SELECT * FROM `images`  ORDER BY `id` DESC LIMIT 100";
+       $result = $conn->query($sql);
     
-      
-      
-      </ul>
-
-    </div>
-  </div> 
-<!-- CONTENT -->
-
-<?php
-    
-
-    $sql = "SELECT * FROM images ORDER BY id DESC LIMIT 4 OFFSET 4";
-    $res = mysqli_query($conn,  $sql);
-    if (mysqli_num_rows($res) > 0) {
-        while ($images = mysqli_fetch_assoc($res)){  ?>
-
-        
-
-        <div class="containercard">
-     <div class="card">
        
-        <div class="top-text">
-           <div class="name">
-       <div class="alb">
-          <?=$images['titel']?>
+       if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo '
+                <div class="card">
+                    <div class="card-header">
+                        <img src="'. $row["image_url"] .'" alt="img" width="200px" />
+                    </div>
+                    <div class="card-body">
+                        <h4>
+                            '. $row["titel"] .'
+                        </h4>
+                        <p>
+                            '. $row["tekst"] .'
+                        </p>
+                        <p>
+                        
+                        <img src="./b_edit.png">
+                      </p>
+                      <p>
+                        <a href="./delete.php?id=" '. $record["id"] .'">
+                         <img src="./b_drop.png">
+                        </a>
+                      </p>
+                    </div>
+                </div>';
+            }
+      } else {
+        echo "0 results";
+      }
+    ?>
+    </div>
+
+
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <div id="button"></div>
+        <div id="container">
+            <div id="cont">
+                <div class="footer_center">
+                    <h3></h3>
+                </div>
+            </div>
         </div>
-           </div>
-           <p>
-           
-           <img src="<?=$images['image_url']?>" width="250px">
-           
-           </p>
-        </div>
-        <div class="bottom-text">
-           <div class="text">
-             <div class="alb">
-              
-               <?=$images['tekst']?>
-        </div>
-           </div>
-           <div class="btn">
-              <a href="./archief.html">Lees meer</a>
-           </div>
-        </div>
-     </div>
-
-       <?php } }?>
-
-<!-- FOOTER -->
-  <div class="footer">
-    <div id="button"></div>
-  <div id="container">
-  <div id="cont">
-  <div class="footer_center">
-       <h3></h3>
-  </div>
-  </div>
-  </div>
-  </div>
+    </div>
 
 
 
+    <script>
+    var navList = document.getElementById("nav-lists");
 
-</style>
-<script>
-  var navList = document.getElementById("nav-lists");
-  function Show() {
-  navList.classList.add("_Menus-show");
-  }
-  
-  function Hide(){
-  navList.classList.remove("_Menus-show");
-  }
-  </script>
+    function Show() {
+        navList.classList.add("_Menus-show");
+    }
+
+    function Hide() {
+        navList.classList.remove("_Menus-show");
+    }
+    </script>
 
 </body>
 

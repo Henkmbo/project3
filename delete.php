@@ -7,5 +7,5 @@
 
      mysqli_query($conn, $sql);
 
-     header("Location: ./read.php");
+     header("Location: ./archief3.php");
 ?>

@@ -26,85 +26,56 @@
       <a href="index.html"><img src="logo.png" alt="logo"></a>
     </div>
     <div class="navbar">
-
       <div class="icon-bar" onclick="Show()">
         <i></i>
         <i></i>
         <i></i>
       </div>
-
       <ul id="nav-lists">
         <li class="close"><span onclick="Hide()">×</span></li>
         <li><a href="index1.php">Home</a></li>
         <li class="separator"><a> | </a></li>
         <li><a href="archief2.php">Archief</a></li>
         <li class="separator"><a> | </a></li>
-        <li><a href="./test/logout.php">Uitloggen</a></li>
-    
-      
-      
-      </ul>
-
+        <li><a href="./test/logout">Uitloggen</a></li>
+     </ul>
     </div>
   </div> 
 <!-- CONTENT -->
 
-<?php
-    
-
-    $sql = "SELECT * FROM images ORDER BY id DESC LIMIT 4 OFFSET 4";
-    $res = mysqli_query($conn,  $sql);
-    if (mysqli_num_rows($res) > 0) {
-        while ($images = mysqli_fetch_assoc($res)){  ?>
-
+<div class="cards">
         
-
-        <div class="containercard">
-     <div class="card">
+      <?php
+       include("connect_db.php");
+       $sql = "SELECT * FROM `images`  ORDER BY `id` DESC LIMIT 100";
+       $result = $conn->query($sql);
+    
        
-        <div class="top-text">
-           <div class="name">
-       <div class="alb">
-          <?=$images['titel']?>
-        </div>
-           </div>
-           <p>
-           
-           <img src="<?=$images['image_url']?>" width="250px">
-           
-           </p>
-        </div>
-        <div class="bottom-text">
-           <div class="text">
-             <div class="alb">
-              
-               <?=$images['tekst']?>
-        </div>
-           </div>
-           <div class="btn">
-              <a href="./archief.html">Lees meer</a>
-           </div>
-        </div>
-     </div>
-
-       <?php } }?>
-
-<!-- FOOTER -->
-  <div class="footer">
-    <div id="button"></div>
-  <div id="container">
-  <div id="cont">
-  <div class="footer_center">
-       <h3></h3>
-  </div>
-  </div>
-  </div>
-  </div>
+       if ($result->num_rows > 0) {
+        // output data of each row
+        while($row = $result->fetch_assoc()) {
+            echo '
+                <div class="card">
+                    <div class="card-header">
+                        <img src="'. $row["image_url"] .'" alt="img" width="200px" />
+                    </div>
+                    <div class="card-body">
+                        <h4>
+                            '. $row["titel"] .'
+                        </h4>
+                        <p>
+                            '. $row["tekst"] .'
+                        </p>
+                    </div>
+                </div>';
+            }
+      } else {
+        echo "0 results";
+      }
+      ?>
+</div>
 
 
-
-
-</style>
 <script>
   var navList = document.getElementById("nav-lists");
   function Show() {
@@ -114,7 +85,7 @@
   function Hide(){
   navList.classList.remove("_Menus-show");
   }
-  </script>
+</script>
 
 </body>
 
