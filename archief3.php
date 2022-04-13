@@ -1,7 +1,3 @@
-<?php
-  include("./news/connect_db.php");
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,28 +55,22 @@
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo '
-                <div class="card">
-                    <div class="card-header">
-                        <img src="'. $row["image_url"] .'" alt="img" width="200px" />
-                    </div>
-                    <div class="card-body">
-                        <h4>
-                            '. $row["titel"] .'
-                        </h4>
-                        <p>
-                            '. $row["tekst"] .'
-                        </p>
-                        <p>
-                        
-                        <img src="./b_edit.png">
-                      </p>
-                      <p>
-                        <a href="./delete.php?id=" '. $record["id"] .'">
-                         <img src="./b_drop.png">
-                        </a>
-                      </p>
-                    </div>
-                </div>';
+            <div class="card">
+            <div class="card-header">
+                <img src="'. $row["image_url"] .'" alt="" width="200px" />
+            </div>
+            <div class="card-body">
+            <div class="ding">
+              <div> <a href="update.php?id=' . $row["id"] . '"><img src="./b_edit.png"></a> <a href="delete.php?id=' . $row["id"] . '"><img src="./b_drop.png"></a></div>
+              </div>
+                <h4>
+                    '. $row["titel"] .'
+                </h4>
+                <p>
+                    '. $row["tekst"] .'
+                </p>
+            </div>
+        </div>';
             }
       } else {
         echo "0 results";
